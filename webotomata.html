@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Otomata </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* Ganti URL di bawah ini dengan URL gambar yang Anda inginkan */
+            /*background-image: url('https://akcdn.detik.net.id/community/media/visual/2020/07/13/manga-naruto-1.webp?w=700&q=90'); /* Gambar dari internet */
+            /* Jika menggunakan gambar lokal, gunakan path seperti ini: */
+            /* background-image: url('nama_gambar.jpg'); */
+            background: linear-gradient(to top, #9ab973, #96a53c, #7a942e, #507d2a, #4a5d23); 
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff; /* Mengubah warna teks menjadi putih untuk kontras */
+            font-weight: bold; 
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Latar belakang putih dengan transparansi */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="text"] {
+
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        lebel {
+            text-align: left;
+
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .valid {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Validasi Angka</h1>
+        <label for="numberInput">Input string:</label><br>
+        <input type="text" id="numberInput" placeholder="Contoh: 123.45 atau 123,45">
+        <button onclick="validateNumber()">Cek Validitas</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        function validateNumber() {
+            const input = document.getElementById('numberInput').value;
+            const messageDiv = document.getElementById('message');
+
+            // Regular expression untuk memeriksa angka yang valid
+            const validNumberPattern =/^(?!.*--)(?!.*\.\.)(?!.*-.*-)(?!.*\..*\.)-?\d+(\.\d+)?([eE][+-]?\d+)?$/; /^[0-9.,]+$/;
+
+            if (validNumberPattern.test(input)) {
+                messageDiv.textContent = "Yes, it is a number";
+                messageDiv.className = "message valid";
+            } else {
+                messageDiv.textContent = "Error: No, it not a number";
+                messageDiv.className = "message error";
+            }
+        }
+    </script>
+</body>
+</html>
